@@ -1,0 +1,19 @@
+.card {
+  margin-top: 28px;
+}
+.card .section-header {
+  display: flex;
+}
+.card .section-header h2 {
+  font-size: 16px;
+  width: 205px;
+}
+.card .section-header button {
+  background-color: transparent;
+  border: none;
+  flex: 1;
+  text-align: right;
+}
+.card article {
+  margin-top: 25px;
+}

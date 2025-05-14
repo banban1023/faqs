@@ -7,5 +7,8 @@ module.exports = defineConfig({
         additionalData: `@import "@/styles/style.less";`
       }
     }
-  }
+  },
+  publicPath: process.env.NODE_ENV === 'production'
+    ? '/faqs/'
+    : '/'
 })

@@ -1,11 +1,11 @@
 <template>
   <div class="card">
-    <div class="section-header" @click="$emit('toggle')">
+    <header class="section-header" @click="$emit('toggle')">
     <h2>{{item.question}}</h2>
       <button aria-label="toogle-accordion">
-        <img :src="srcUrl" alt="">
+        <img :src="srcUrl" alt="isOpen ? 'close answer' : 'open answer'">
       </button>
-    </div>
+    </header>
     <article v-show="isOpen">
       <p>
         {{item.answer}}

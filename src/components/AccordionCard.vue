@@ -1,16 +1,17 @@
 <template>
   <div class="card">
-    <div class="section-header" @click="toggleBtn">
-    <h2>What is Frontend Mentor, and how will it help me?</h2>
+    <div class="section-header" @click="$emit('toggle')">
+    <h2>{{item.question}}</h2>
       <button aria-label="toogle-accordion">
         <img :src="srcUrl" alt="">
       </button>
     </div>
-    <article>
-      Frontend Mentor offers realistic coding challenges to help developers improve their
-      frontend coding skills with projects in HTML, CSS, and JavaScript. It's suitable for
-      all levels and ideal for portfolio building.
+    <article v-show="isOpen">
+      <p>
+        {{item.answer}}
+      </p>
     </article>
+    <div class="divider" v-if="!isLast"></div>
   </div>
 </template>
 
@@ -19,18 +20,26 @@ export default {
   data () {
     return {
       openBtn: require('@/assets/images/icon-plus.svg'),
-      closeBtn: require('@/assets/images/icon-minus.svg'),
-      isOpen: true
+      closeBtn: require('@/assets/images/icon-minus.svg')
+    }
+  },
+  props: {
+    item: {
+      type: Object,
+      required: true
+    },
+    isOpen: {
+      type: Boolean,
+      default: false
+    },
+    isLast: { // 新增 prop，表示是否是最后一项
+      type: Boolean,
+      default: false
     }
   },
   computed: {
     srcUrl () {
       return this.isOpen ? this.openBtn : this.closeBtn
-    }
-  },
-  methods: {
-    toggleBtn () {
-      this.isOpen = !this.isOpen
     }
   }
 }

@@ -4,16 +4,42 @@
     display: flex;
     h2 {
       font-size: 16px;
-      width: 205px;
+      width: 212px;
+      flex: 1;
     }
     button {
       background-color: transparent;
       border: none;
-      flex: 1;
       text-align: right;
+      width: 60px;
     }
   }
   article {
     margin-top: 25px;
+    p {
+      font-size: 14px;
+      color: @purple-600;
+      line-height: 20px;
+    }
+  }
+  .divider {
+    height: 1px;
+    background-color: @purple-100;
+    margin: 16px 0;
+  }
+}
+@media (min-width: 376px) {
+  .card {
+    h2 {
+      cursor: pointer;
+      &:hover {
+        color: #AD28EB;
+      }
+    }
+    article {
+      p {
+        font-size: 16px;
+      }
+    }
   }
 }

@@ -4,6 +4,7 @@
   padding: 144px 25px;
   background: url(../assets/images/background-pattern-mobile.svg) no-repeat @purple-100;
   section {
+    margin: 0 auto;
     background-color: @white;
     padding: 25px;
     border-radius: 7px;
@@ -16,6 +17,24 @@
       h1 {
         font-size: 30px;
         margin-left: 15px;
+      }
+    }
+  }
+}
+@media (min-width: 376px) {
+  .app {
+    background: url(../assets/images/background-pattern-desktop.svg) repeat-x @purple-100;
+    section {
+      width: 100%;
+      max-width: 600px;
+      padding: 40px;
+      header {
+        img {
+          transform: scale(0.9);
+        }
+        h1 {
+          font-size: 55px;
+        }
       }
     }
   }

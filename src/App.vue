@@ -6,18 +6,46 @@
         <h1>FAQs</h1>
       </header>
       <main>
-        <AccordionCard></AccordionCard>
+        <AccordionCard
+        v-for="(item, index) in FAQsList"
+        :key="index"
+        :item="item"
+        :is-open="activeIndex === index"
+        @toggle="handleToggle(index)"
+        :is-last="index === FAQsList.length - 1"
+        ></AccordionCard>
       </main>
     </section>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 import AccordionCard from './components/AccordionCard.vue'
 export default {
   name: 'App',
+  data () {
+    return {
+      FAQsList: [],
+      activeIndex: null // 存储当前展开项的索引
+    }
+  },
   components: {
     AccordionCard
+  },
+  created () {
+    this.getFAQsList()
+  },
+  methods: {
+    async getFAQsList () {
+      const res = await axios.get('http://localhost:3000/faqs')
+      this.FAQsList = res.data
+      console.log(this.FAQsList)
+    },
+    handleToggle (index) {
+      // 如果点击的是已展开的项，则关闭；否则展开新项
+      this.activeIndex = this.activeIndex === index ? null : index
+    }
   }
 }
 </script>
